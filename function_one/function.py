@@ -1,5 +1,5 @@
-effective_dates = ["01/01/2002","01/01/2005","01/01/2004","01/01/2006","01/01/2008","01/01/2011","01/01/2012","01/01/2013","01/01/2016","01/01/2017","01/01/2018","01/01/2019","01/01/2020","01/01/2025","01/01/2050"]
-percentage_value = [5.00,6.50,5.50,4.50,3.50,3.75,4.25,3.90,2.50,2.75,2.95,3.50,12.50,6.50,3.50]
+effective_dates = []
+percentage_value = []
 
 def date_conversion(date):
     new_date = date.split("/")
@@ -45,7 +45,16 @@ def Inflation_factor(From_date, To_date, Effective_Dates, Percentage_Values):
         # and calculates the final fraction of the years interest
         return cumulative_interest
 
+while True:
+    date = input("Enter a date in dd/mm/yyyy format: \n")
+    value = float(input("Enter a percentage value: \n "))
+    effective_dates.append(date)
+    percentage_value.append(value)
+    if input("e to finish entering values: \n").lower():
+        break
 
+print("Dates: ", ", ".join(effective_dates))
+print("Percentage Values: ", percentage_value)
 
 while True:
     from_date = input("enter from_date: \n")
