@@ -1,14 +1,19 @@
-def interpolation(d, x):
-	output = d[0][1] + (x - d[0][0]) * ((d[1][1] - d[0][1])/(d[1][0] - d[0][0]))
-	return output
+from scipy.interpolate import interp1d
 
-print("Values needed are Y1, Y2 floating values(observed) and X1, X2 floating values observed and a value to interpolate")
-y1 = float(input("Enter Y1: \n"))
-y2 = float(input("Enter Y2: \n"))
-x1 = float(input("Enter X2: \n"))
-x2 = float(input("Enter X2: \n"))
-value_to_interpolate = float(input("Enter value to interpolate: \n"))
+# Linear interpolation using Pythons scipy module
 
-data=[[y1, y2],[x1, x2]]
-
-print(f"Interpolated value is: {interpolation(data, value_to_interpolate)}")
+X = [1,2,3,4,5] # random x values
+Y = [11,2.2,3.5,-88,1] # random y values
+ 
+# test value
+interpolate_x = 2.5
+ 
+# Finding the interpolation
+y_interp = interp1d(X, Y)
+# defaults to linear, keyword arguments for above can be kind, copy, axis, bounds error
+# kind - linear, quadratic, cubic, previous etc.
+# copy - holds boolean values if True, the class makes internal copies of X and Y
+# axis - specifies the axis of y along which we interpolate 
+# bounds error - holds boolean values if true, ValueError is raised if interpolation is attempted on a value outside of range x
+print(f"Value of Y at x = {interpolate_x} is",
+      y_interp(interpolate_x))
